@@ -66,7 +66,20 @@ object List {
     }
   }
 
-  def main(args: Array[String]) = {
+  //Exercise 3.6
+  def init[A](l: List[A]): List[A] = {
+    def loop[A](xs: List[A], agg: List[A]): List[A] = {
+      xs match {
+        case Cons(x, Nil) =>
+          agg
+        case Cons(head, tail) =>
+          loop(tail, Cons(head, agg))
+      }
+    }
+    loop(l, Nil)
+  }
+
+  def  main(args: Array[String]) = {
     println( output() )
   }
 }
